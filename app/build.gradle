@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.nojotocamera'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.nojotocamera"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    android.buildFeatures.dataBinding true
+    android.buildFeatures.viewBinding true
+}
+
+ext {
+    cameraKitVersion = '1.21.1'
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.github.iammert:CameraVideoButton:0.2'
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.github.iknow4:android-utils-sdk:1.1.2'
+    implementation "com.snap.camerakit:support-camera-activity:$cameraKitVersion"
+    implementation "com.snap.camerakit:camerakit:$cameraKitVersion"
+    implementation "com.snap.camerakit:camerakit-kotlin:$cameraKitVersion"
+    // Provides bundled lens(es) that can be applied when remote groups are not available/needed.
+    implementation "com.snap.camerakit:lenses-bundle:$cameraKitVersion"
+    implementation 'androidx.core:core-ktx:1.7.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
